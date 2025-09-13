@@ -20,3 +20,22 @@ function verifNum(num){
 
     return caracteristicasNum
 }
+
+const prompt = require("prompt-sync")({ sigint: true }); // sigint: true allows Ctrl+C to exit
+
+let num
+
+while (true) {
+    console.log()
+    console.log(`---------- VERIFICADOR DE NÚMEROS ----------\n`)
+    num = Number(prompt('Digite um número: '))
+
+    if (Number.isNaN(num)) {
+        console.log()
+        console.log('Não é um número válido')
+    } else {
+        break
+    }
+}
+
+console.log(`O número ${num} é: ${verifNum(num).join(" - ")}`)
