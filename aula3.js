@@ -6,12 +6,38 @@ function verificacaoQtde(qtde, operacao) {
     while (true) {
         qtde = parseInt(prompt(`Quantos números deseja ${operacao}? (min 2)`));
         if (qtde > 1) {
-            break
+            break;
         }
         console.log("\nEscolha no mínimo 2 números !!\n");
     }
-    return qtde
+    return qtde;
 }
+
+function realizaOperacao(qtde, operacao) {
+    let result = 0;
+    let numeros = []
+    for (let i = 0; i < qtde; i++) {
+        let valor = parseInt(prompt(`Digite o ${i + 1}° numero?`));
+        numeros.push(valor)
+    }
+    switch (operacao) {
+        case "soma":
+            result = numeros.reduce(function (a, b) { return a + b })
+            break
+        case "subtração":
+            result = numeros.reduce(function (a, b) { return a - b })
+            break
+        case "multiplicação":
+            result = numeros.reduce(function (a, b) { return a * b })
+            break
+        case "divisão":
+            result = numeros.reduce(function (a, b) { return a / b })
+            break
+    }
+    console.log(`A ${operacao} de todos os números é ${result}`);
+    console.log();
+}
+
 console.clear();
 while (true) {
     console.log(
@@ -26,67 +52,26 @@ while (true) {
     while (true) {
         switch (option) {
             case 1:
-                qtdeNum = verificacaoQtde(qtdeNum, operacao = "somar")
+                qtdeNum = verificacaoQtde(qtdeNum, (operacao = "somar"));
 
-                let soma = 0;
-                for (let i = 0; i < qtdeNum; i++) {
-                    let valor = parseInt(prompt(`Digite o ${i + 1}° numero?`));
-                    if (soma == 0) {
-                        soma = valor;
-                    } else {
-                        soma += valor;
-                    }
-                }
-                console.log(`A soma de todos os números é ${soma}`);
-                console.log();
+                realizaOperacao(qtdeNum, operacao = "soma")
                 break;
-
             case 2:
-                qtdeNum = verificacaoQtde(qtdeNum, operacao="subtrair")
+                qtdeNum = verificacaoQtde(qtdeNum, (operacao = "subtrair"));
 
-                let subtracao = 0;
-                for (let i = 0; i < qtdeNum; i++) {
-                    let valor = parseInt(prompt(`Digite o ${i + 1}° numero?`));
-                    if (subtracao == 0) {
-                        subtracao += valor;
-                    } else {
-                        subtracao -= valor;
-                    }
-                }
-                console.log(`A subtração de todos os números é ${subtracao}`);
-                console.log();
+                realizaOperacao(qtdeNum, operacao = "subtração")
                 break;
 
             case 3:
-                qtdeNum = verificacaoQtde(qtdeNum, operacao="multiplicar")
+                qtdeNum = verificacaoQtde(qtdeNum, (operacao = "multiplicar"));
 
-                let multiplicacao = 0;
-                for (let i = 0; i < qtdeNum; i++) {
-                    let valor = parseInt(prompt(`Digite o ${i + 1}° numero?`));
-                    if (multiplicacao == 0) {
-                        multiplicacao = valor;
-                    } else {
-                        multiplicacao *= valor;
-                    }
-                }
-                console.log(`A multiplicação de todos os números é ${multiplicacao}`);
-                console.log();
+                realizaOperacao(qtdeNum, operacao = "multiplicação")
                 break;
 
             case 4:
-                qtdeNum = verificacaoQtde(qtdeNum, operacao="dividir")
+                qtdeNum = verificacaoQtde(qtdeNum, (operacao = "dividir"));
 
-                let divisao = 0;
-                for (let i = 0; i < qtdeNum; i++) {
-                    let valor = parseInt(prompt(`Digite o ${i + 1}° numero?`));
-                    if (divisao == 0) {
-                        divisao = valor;
-                    } else {
-                        divisao /= valor;
-                    }
-                }
-                console.log(`A divisão de todos os números é ${divisao}`);
-                console.log();
+                realizaOperacao(qtdeNum, operacao = "divisão")
                 break;
             case 5:
                 break;
